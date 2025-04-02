@@ -154,6 +154,11 @@ internal class InteropAssemblyGeneratorRunner : IRunner
             Pass60AddImplicitConversions.DoPass(rewriteContext);
         }
 
+        using (new TimingCookie("Implementing awaiters"))
+        {
+            Pass61ImplementAwaiters.DoPass(rewriteContext);
+        }
+
         using (new TimingCookie("Creating properties"))
         {
             Pass70GenerateProperties.DoPass(rewriteContext);
